@@ -52,14 +52,14 @@ def tap(x, y):
     if mark is None or mark == spot or tiles[mark] != tiles[spot]:
         state['mark'] = spot
     else:
-        # Pareja encontrada
+        # Pair founded
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
         global pairs
         pairs += 1
 
-    # Agrega la cantidad de clicks a la variable global
+    # Add the clicks to the screen
     global c
     c += 1
 
@@ -84,14 +84,16 @@ def draw():
         goto(x + 2, y)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
-    # Escribe la cantidad de clicks en la pantalla (superior derecha)
+    # Write the clicks on the screen (up right)
     up()
     goto(210,210)
     write('Taps: ' + str(c), align="center", font=('Arial', 14, 'italic'))
+    # writes done if all pairs were found
     if pairs == 32:
         goto(0,0)
         color('white')
         write('DONE!', align="center", font=('Arial', 40, 'bold'))
+        return
     update()
     ontimer(draw, 100)
 
