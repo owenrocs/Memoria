@@ -15,7 +15,7 @@ from turtle import *
 from freegames import path
 
 car = path('car.gif')
-tiles = list(range(32)) * 2
+tiles = list(range(32)) * 2     #Here a list of number is generated for each square
 state = {'mark': None}
 hide = [True] * 64
 
@@ -81,9 +81,9 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x+25, y+10) #Taking the square widht and height, we increase the starting
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        write(tiles[mark], align="center", font=('Arial', 30, 'normal'))
     # Write the clicks on the screen (up right)
     up()
     goto(210,210)
